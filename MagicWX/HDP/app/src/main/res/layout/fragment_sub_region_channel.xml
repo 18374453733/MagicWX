@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.hdpfans.app.ui.widget.ElementView
+        android:id="@+id/btn_region_channel_hide"
+        style="@style/MenuButton"
+        android:text="隐藏" />
+
+    <com.hdpfans.app.ui.widget.ElementView
+        android:id="@+id/btn_region_channel_show"
+        style="@style/MenuButton"
+        android:text="显示" />
+
+</LinearLayout>

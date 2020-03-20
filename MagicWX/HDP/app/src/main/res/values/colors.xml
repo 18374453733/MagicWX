@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="channel_list_item_epg_off">#a89a9fa4</color>
+    <color name="channel_list_item_epg_on">#ff2d2d2d</color>
+
+    <color name="guide_on">#E54B08</color>
+
+    <color name="quality_SD">#25C9BF</color>
+    <color name="quality_HD">#FD6805</color>
+    <color name="quality_SHD">#7B68EE</color>
+
+    <color name="playing_epg">@android:color/holo_green_light</color>
+    <color name="next_epg">@android:color/holo_orange_light</color>
+
+</resources>
+

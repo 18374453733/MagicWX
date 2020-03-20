@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/bg_exit"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_qr_code"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@android:color/white"
+            android:padding="1dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/icon_exit_qr_code" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="@dimen/exit_qr_code_mt"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="@string/txt_exit_qr_tips"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txt_version_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/exit_tips_mt"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:lineSpacingExtra="7dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp"
+            tools:text="@string/txt_version_tips" />
+
+        <TextView
+            android:id="@+id/txt_plugin_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_show_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="@dimen/exit_menu_btn_mt"
+            android:background="@drawable/bg_exit_btn"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="菜单选项"
+            android:textColor="@color/selector_exit_button"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="@dimen/exit_menu_btn_mt"
+            android:background="@drawable/bg_exit_btn"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="退出直播"
+            android:textColor="@color/selector_exit_button"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_recommend"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/img_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/img_recommend_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="65dp"
+            android:src="@drawable/anim_recommend_guide" />
+
+        <Button
+            android:id="@+id/btn_guide"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@id/img_recommend_guide"
+            android:background="@drawable/bg_exit_guide"
+            android:gravity="center"
+            android:text="立享购物"
+            android:textColor="@color/selector_exit_guide" />
+
+        <ProgressBar
+            android:id="@+id/progress_download"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_alignParentBottom="true"
+            android:progressDrawable="@drawable/progress_exit_download"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

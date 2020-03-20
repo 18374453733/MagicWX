@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    def globalConfig = rootProject.extensions.getByName('ext')
+
+    compileSdkVersion globalConfig['androidCompileSdkVersion']
+
+    defaultConfig {
+        minSdkVersion globalConfig['androidMinSdkVersion']
+        targetSdkVersion globalConfig['androidTargetSdkVersion']
+        versionCode 13
+        versionName "r${versionCode}_${new Date().format('yyyyMMddHHmm')}"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    testImplementation "org.robolectric:robolectric:$rootProject.robolectricVersion"
+    testImplementation "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
+    testImplementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    testImplementation "junit:junit:$rootProject.junitVersion"
+
+    compileOnly "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
+    compileOnly "com.google.code.gson:gson:$rootProject.gsonVersion"
+    compileOnly "org.nanohttpd:nanohttpd:$rootProject.nanohttpdVersion"
+
+    api project(':api')
+}
+
+task dx(dependsOn: build, type: Exec, group: 'build') {
+    def source = buildDir.absolutePath + '/intermediates/bundles/release/classes.jar'
+    def output = buildDir.absolutePath + "/outputs/dx/hdp_${android.defaultConfig.versionCode}.jar"
+    mkdir file(output).parent
+    commandLine 'dx', '--dex', '--output=' + output, source
+    println 'dx file build file: ' + output
+}

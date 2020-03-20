@@ -1,0 +1,220 @@
+import org.aspectj.bridge.IMessage
+import org.aspectj.bridge.MessageHandler
+import org.aspectj.tools.ajc.Main
+
+apply plugin: 'com.android.application'
+
+android {
+
+    def globalConfig = rootProject.extensions.getByName('ext')
+
+    compileSdkVersion globalConfig['androidCompileSdkVersion']
+
+    defaultConfig {
+        minSdkVersion globalConfig['androidMinSdkVersion']
+        targetSdkVersion globalConfig['androidTargetSdkVersion']
+
+        applicationId globalConfig['androidApplicationID']
+        versionCode globalConfig['androidVersionCode']
+        versionName globalConfig['androidVersionName']
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "Boolean", "PLUGIN_MODE", "${pluginMode.toBoolean()}"
+        buildConfigField('String', 'BASE_URL', '"https://api.github.com"')
+        buildConfigField('String', 'DATABASE_NAME', '"hdp.db"')
+        buildConfigField('int', 'DATABASE_VERSION', '3')
+        buildConfigField('String', "BUGLY_APP_ID", '"dd6b7e7fcc"')
+
+        manifestPlaceholders = [
+                "BAIDU_APP_KEY": "d2b5371915"
+        ]
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
+        multiDexEnabled true
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        hdp {}
+        dangbei {}
+        shafa {}
+
+        productFlavors.all {
+            flavor -> flavor.manifestPlaceholders = [BAIDU_CHANNEL_VALUE: name]
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('../buildsystem/debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+        release {
+            storeFile file('../buildsystem/gimi.keystore')
+            storePassword 'gimi123;'
+            keyAlias 'uconsole'
+            keyPassword 'gimi123;'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force "com.android.support:design:$rootProject.supportLibraryVersion"
+        force "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+        force "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    }
+}
+
+dependencies {
+
+    // Include ${module}/libs/*.jar, Do not alone import!
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Android official support dependencies
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintVersion"
+    implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomVersion"
+    implementation "android.arch.persistence.room:rxjava2:$rootProject.roomVersion"
+
+    // Development helpful dependencies
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanaryVersion"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanaryVersion"
+    implementation "com.facebook.stetho:stetho:$rootProject.stethoVersion"
+    implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stethoVersion"
+
+    implementation "org.greenrobot:eventbus:$rootProject.eventbugVersion"
+
+    // Network dependencies
+//    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+//    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+//    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okHttpVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
+    implementation "com.trello.rxlifecycle2:rxlifecycle:$rootProject.rxLifecycleVersion"
+    implementation "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:$rootProject.rxLifecycleVersion"
+
+    // DI dependencies
+    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android:$rootProject.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
+    implementation "org.aspectj:aspectjrt:$rootProject.aspectVersion"
+
+    implementation "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
+
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+
+    implementation "tv.danmaku.ijk.media:ijkplayer-java:$rootProject.ijkplayerVersion"
+    implementation "tv.danmaku.ijk.media:ijkplayer-armv7a:$rootProject.ijkplayerVersion"
+
+    implementation "zlc.season:rxdownload3:$rootProject.rxDownloadVersion"
+    implementation "org.nanohttpd:nanohttpd:$rootProject.nanohttpdVersion"
+    implementation "com.github.tbruyelle:rxpermissions:$rootProject.rxpermissionsVersion"
+    implementation "com.github.zafarkhaja:java-semver:$rootProject.semverVersion"
+    implementation "com.tencent.bugly:crashreport:$rootProject.buglyVersion"
+
+    implementation "com.baidu.mobstat:mtj-sdk:$rootProject.mdjVersion"
+    implementation 'com.aliyun.dpa:oss-android-sdk:+'
+
+    if (pluginMode.toBoolean()) {
+        implementation project (':api')
+    } else {
+        implementation project (':plugin')
+    }
+
+    // Test dependencies
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs'
+    })
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    testImplementation "org.robolectric:robolectric:$rootProject.robolectricVersion"
+}
+
+final def log = project.logger
+final def variants = project.android.applicationVariants
+variants.all { variant ->
+    if (!variant.buildType.isDebuggable()) {
+        log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
+        return
+    }
+
+    JavaCompile javaCompile = variant.javaCompile
+    javaCompile.doLast {
+        String[] args = ["-showWeaveInfo",
+                         "-1.8",
+                         "-inpath", javaCompile.destinationDir.toString(),
+                         "-aspectpath", javaCompile.classpath.asPath,
+                         "-d", javaCompile.destinationDir.toString(),
+                         "-classpath", javaCompile.classpath.asPath,
+                         "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
+        log.debug "ajc args: " + Arrays.toString(args)
+
+        MessageHandler handler = new MessageHandler(true)
+        new Main().run(args, handler)
+        for (IMessage message : handler.getMessages(null, true)) {
+            switch (message.getKind()) {
+                case IMessage.ABORT:
+                case IMessage.ERROR:
+                case IMessage.FAIL:
+                    log.error message.message, message.thrown
+                    break
+                case IMessage.WARNING:
+                    log.warn message.message, message.thrown
+                    break
+                case IMessage.INFO:
+                    log.info message.message, message.thrown
+                    break
+                case IMessage.DEBUG:
+                    log.debug message.message, message.thrown
+                    break
+            }
+        }
+    }
+}

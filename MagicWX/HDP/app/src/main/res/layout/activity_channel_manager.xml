@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8000000">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_channel_type"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:descendantFocusability="afterDescendants"
+        android:nextFocusRight="@id/recycler_channel_list" />
+
+    <TextView
+        android:id="@+id/txt_manager_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@id/recycler_channel_type"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="长按'ok'键收藏节目 短按'ok'键隐藏节目或者分类"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_channel_list"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@id/txt_manager_tips"
+        android:layout_alignRight="@id/txt_manager_tips"
+        android:layout_below="@id/txt_manager_tips"
+        android:descendantFocusability="afterDescendants"
+        android:nextFocusLeft="@id/recycler_channel_type"
+        android:nextFocusRight="@id/recycler_channel_list"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0.5dip"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/recycler_channel_list"
+        android:background="@drawable/icon_manager_line" />
+
+    <TextView
+        android:id="@+id/txt_collect_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/recycler_collect_channel_list"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="收藏节目：%d/%d"
+        android:textColor="@android:color/white"
+        android:textSize="22sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_collect_channel_list"
+        android:nextFocusLeft="@id/recycler_channel_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@id/recycler_channel_list"
+        android:layout_below="@id/txt_manager_tips"
+        android:layout_toRightOf="@id/line"
+        android:descendantFocusability="afterDescendants"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp" />
+
+</RelativeLayout>

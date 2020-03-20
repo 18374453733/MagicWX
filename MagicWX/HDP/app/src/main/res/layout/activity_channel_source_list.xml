@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="#AA000000"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="17dp"
+        android:text="源："
+        android:textColor="@android:color/white"
+        android:textSize="17sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_channel_source_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="afterDescendants" />
+
+</LinearLayout>

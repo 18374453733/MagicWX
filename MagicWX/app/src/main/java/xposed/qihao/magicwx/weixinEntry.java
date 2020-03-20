@@ -94,7 +94,7 @@ public class weixinEntry implements IXposedHookLoadPackage {
                                 z = true;
                             }
                             if (Boolean.valueOf(z).booleanValue()) {
-                                XposedBridge.log("到底走这里了没？！");
+                                LogUtil.d("到底走这里了没？！");
                                 final String finalCon_content = con_content;
                                 String[] strArr2 = a;
                                 new Thread(new Runnable() {
@@ -129,7 +129,7 @@ public class weixinEntry implements IXposedHookLoadPackage {
                             } else if ("weixin".equals(con_talker)) {
 
                             } else {
-                                XposedBridge.log(">>> " + con_talker + "[发送一条普通消息]:" + con_content);
+                                LogUtil.d(">>> " + con_talker + "[发送一条普通消息]:" + con_content);
                                 StringBuilder sb2 = new StringBuilder();
                                 sb2.append("\u60a8\u53d1\u9001\u4e86: ");
                                 sb2.append(con_content);
@@ -142,11 +142,11 @@ public class weixinEntry implements IXposedHookLoadPackage {
 //                        e = e2;
                         String str2 = tab;
                         XposedBridge.log(e2);
-                        XposedBridge.log("Exception with [message msgId stared!]");
+                        LogUtil.d("Exception with [message msgId stared!]");
                         return;
                     }
                 }
-                Log.w("weixin_zp_sailong", "insertWithOnConflict-----------------------------------------------------------------------------");
+                LogUtil.d("weixin_zp_sailong", "insertWithOnConflict-----------------------------------------------------------------------------");
             }
         });
     }
@@ -348,6 +348,15 @@ public class weixinEntry implements IXposedHookLoadPackage {
                     XposedBridge.log(param.getClass().toString());
                     weixinEntry.attachloadPackageParam = ((Context) param.args[0]).getClassLoader();
                     weixinEntry.this.insertHook(weixinEntry.attachloadPackageParam);
+                }
+            }});
+        } else if (lpparam.packageName.equals("tv.danmaku.bili")) {
+            XposedHelpers.findAndHookMethod(Application.class, "attach", new Object[]{Context.class, new XC_MethodHook() {
+                protected void afterHookedMethod(XC_MethodHook.MethodHookParam param) {
+                    XposedBridge.log(param.getClass().toString());
+                    weixinEntry.attachloadPackageParam = ((Context) param.args[0]).getClassLoader();
+                    weixinEntry.this.insertHook(weixinEntry.attachloadPackageParam);
+                    BiliHook.init((Context) param.args[0]);
                 }
             }});
         }

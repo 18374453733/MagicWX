@@ -13,15 +13,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        LogUtil logUtil = new LogUtil();
         button = (Button) findViewById(R.id.button_hook);
-        button.setOnClickListener(v-> Toast.makeText(this,toastMessage(),Toast.LENGTH_SHORT).show());
+        button.setOnClickListener(v -> Toast.makeText(this, toastMessage(), Toast.LENGTH_SHORT).show());
     }
 
     public String toastMessage() {
         return "我未被劫持";
     }
-
-
 
 
 }

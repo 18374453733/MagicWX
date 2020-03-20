@@ -1,0 +1,158 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "8a3766ab2b62c97aaa4e79764c6dc962",
+    "entities": [
+      {
+        "tableName": "channel",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`cid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id` INTEGER NOT NULL, `tmpUrls` TEXT, `num` INTEGER NOT NULL, `name` TEXT, `area` TEXT, `itemId` INTEGER NOT NULL, `pinyin` TEXT, `quality` TEXT, `epgId` TEXT, `weigh` INTEGER NOT NULL, `main` INTEGER NOT NULL, `collect` INTEGER NOT NULL, `hidden` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "cid",
+            "columnName": "cid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tmpUrls",
+            "columnName": "tmpUrls",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "num",
+            "columnName": "num",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "area",
+            "columnName": "area",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "itemId",
+            "columnName": "itemId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pinyin",
+            "columnName": "pinyin",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "quality",
+            "columnName": "quality",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "epgId",
+            "columnName": "epgId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "weigh",
+            "columnName": "weigh",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "main",
+            "columnName": "main",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "collect",
+            "columnName": "collect",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hidden",
+            "columnName": "hidden",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "cid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_channel_itemId",
+            "unique": false,
+            "columnNames": [
+              "itemId"
+            ],
+            "createSql": "CREATE  INDEX `index_channel_itemId` ON `${TABLE_NAME}` (`itemId`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "channel_type",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT, `hidden` INTEGER NOT NULL, `weigh` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hidden",
+            "columnName": "hidden",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weigh",
+            "columnName": "weigh",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"8a3766ab2b62c97aaa4e79764c6dc962\")"
+    ]
+  }
+}

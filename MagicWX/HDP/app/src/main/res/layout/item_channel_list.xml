@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_item_channel_list"
+    android:focusable="true"
+    android:paddingLeft="10dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp">
+
+    <TextView
+        android:id="@+id/txt_channel_num"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:duplicateParentState="true"
+        android:textColor="@color/selector_item_channel_info"
+        android:textSize="20sp"
+        tools:text="1" />
+
+    <TextView
+        android:id="@+id/txt_channel_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/txt_channel_num"
+        android:duplicateParentState="true"
+        android:maxLines="1"
+        android:textColor="@color/selector_item_channel_info"
+        android:textSize="20sp"
+        tools:text="CCTV 1" />
+
+    <TextView
+        android:id="@+id/txt_epg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/txt_channel_num"
+        android:layout_below="@id/txt_channel_num"
+        android:layout_marginTop="8dp"
+        android:layout_toLeftOf="@id/img_mark"
+        android:duplicateParentState="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:textColor="@color/selector_item_channel_epg"
+        android:textSize="15sp"
+        tools:text="第一动画乐园:熊出没之熊熊乐园2" />
+
+    <ImageView
+        android:id="@+id/img_collect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/icon_collect"
+        android:visibility="invisible"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/txt_quality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@id/img_collect"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        android:visibility="gone"
+        tools:text="高清"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/img_mark"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_epg"
+        android:scaleType="fitXY"
+        android:src="@drawable/diver_channel_list" />
+
+</RelativeLayout>

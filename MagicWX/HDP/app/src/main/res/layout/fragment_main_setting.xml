@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_main_setting"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/bg_transparent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_menu_decode_mode"
+            style="@style/MenuButton"
+            android:text="解码模式" />
+
+        <Button
+            android:id="@+id/btn_menu_aspect_ratio"
+            style="@style/MenuButton"
+            android:text="画面比例" />
+
+        <Button
+            android:id="@+id/btn_menu_region_channel"
+            style="@style/MenuButton"
+            android:text="外省节目" />
+
+        <Button
+            android:id="@+id/btn_menu_boot_channel"
+            style="@style/MenuButton"
+            android:text="开机频道" />
+
+        <Button
+            android:id="@+id/btn_menu_display_text_size"
+            style="@style/MenuButton"
+            android:text="字体大小" />
+
+
+        <Button
+            android:id="@+id/btn_menu_channel_epg"
+            style="@style/MenuButton"
+            android:text="节目预告" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/layout_sub_menu_container"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/layout_main_setting" />
+
+</RelativeLayout>

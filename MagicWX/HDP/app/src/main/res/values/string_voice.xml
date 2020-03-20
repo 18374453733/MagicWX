@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="voice_type_last_channel">上一个频道</string>
+    <string name="voice_type_next_channel">下一个频道</string>
+    <string name="voice_type_next_source">下一个源</string>
+    <string name="voice_type_back">退出</string>
+
+    <string-array name="voice_dict_last_channel">
+        <item>上一台</item>
+        <item>上一频道</item>
+        <item>上一个频道</item>
+        <item>前面一个台</item>
+        <item>上一个台</item>
+        <item>前面一个频道</item>
+    </string-array>
+
+    <string-array name="voice_dict_next_channel">
+        <item>下一台</item>
+        <item>下一频道</item>
+        <item>下一个频道</item>
+        <item>后面一个台</item>
+        <item>后一个台</item>
+        <item>后一个频道</item>
+    </string-array>
+
+    <string-array name="voice_dict_next_source">
+        <item>流畅</item>
+        <item>换源</item>
+        <item>直播卡顿</item>
+        <item>下一个源</item>
+        <item>流畅直播</item>
+        <item>切换节目源</item>
+    </string-array>
+
+    <string-array name="voice_dict_back">
+        <item>退出直播</item>
+        <item>退出</item>
+        <item>返回</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="match_parent"
+    android:layout_alignParentRight="true"
+    android:layout_gravity="right"
+    android:background="@drawable/bg_transparent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="75dp"
+    android:paddingTop="75dp">
+
+    <Button
+        android:id="@+id/btn_show_help"
+        style="@style/MenuButton"
+        android:text="查看" />
+
+</LinearLayout>
+

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.hdpfans.app.ui.widget.media.IjkVideoView
+        android:id="@+id/view_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TableLayout
+        android:id="@+id/hud_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:background="#77000000"
+        android:padding="8dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/img_shop_reproduction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
+
+    <ImageView
+        android:id="@+id/img_fail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/txt_on_key_channel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="right"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:background="#aa000000"
+        android:padding="15dp"
+        android:textColor="@android:color/white"
+        android:textSize="17sp"
+        android:visibility="gone"
+        tools:text="1"
+        tools:visibility="visible" />
+
+    <RelativeLayout
+        android:id="@+id/layout_channel_info"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="14dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/bg_channel_epg_tips"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/txt_channel_num"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="17sp"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/txt_channel_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_toRightOf="@id/txt_channel_num"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:text="CCTV 1" />
+
+        <TextView
+            android:id="@+id/txt_playing_epg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_channel_num"
+            android:layout_alignLeft="@id/txt_channel_num"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:text="正在播放： 第一动画乐园：天眼归来"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/txt_next_epg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_channel_num"
+            android:layout_alignLeft="@id/txt_channel_num"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:text="即将播放： "
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_video_loading"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="80dp"
+        android:indeterminateBehavior="repeat"
+        android:indeterminateDrawable="@drawable/progress_video_loading"
+        android:indeterminateDuration="600"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+</merge>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hdpfans.app.ui.widget.media.FocusKeepRecyclerView
+    android:id="@+id/recycler_region_list"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="match_parent"
+    android:layout_alignParentRight="true"
+    android:layout_gravity="right"
+    android:background="@drawable/bg_transparent"
+    android:descendantFocusability="afterDescendants"
+    />
+

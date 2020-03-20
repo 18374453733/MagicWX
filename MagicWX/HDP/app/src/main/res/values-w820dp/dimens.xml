@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="exit_qr_code_mt">15dp</dimen>
+    <dimen name="exit_tips_mt">40dp</dimen>
+    <dimen name="exit_menu_btn_mt">30dp</dimen>
+</resources>

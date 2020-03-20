@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_main_setting"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/bg_transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="75dp"
+        android:paddingTop="75dp">
+
+        <Button
+            android:id="@+id/btn_menu_voice_support"
+            style="@style/MenuButton"
+            android:text="语音支持" />
+
+        <Button
+            android:id="@+id/btn_menu_system_boot"
+            style="@style/MenuButton"
+            android:text="开机启动" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/layout_sub_menu_container"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/layout_main_setting" />
+
+</RelativeLayout>
